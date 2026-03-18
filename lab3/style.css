@@ -1,0 +1,50 @@
+body{
+    font-family: calibri;
+    font-size: medium;
+    color: darkblue;
+}
+
+.naglowek1{
+    font-size: 50px;
+}
+.tekst{
+    margin: auto;
+    border-style: dashed;
+    width: 600px;
+    height: 200px;
+    text-align: justify;
+    overflow-y: scroll;
+    scrollbar-color: lightgrey black;
+}
+
+p{
+    text-align: center;
+}
+
+table{
+    margin-right: auto;
+    margin-left: 45%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+td{
+    border-color: rgb(74, 75, 124);
+    border-style: solid;
+    border-width: thin;
+    padding: 5px;
+}
+
+
+.wiersz{
+    background-color: rgb(132, 151, 187);
+}
+
+
+.odnosnik{
+    color:green
+}
+
+li{
+    list-style: circle;
+}
