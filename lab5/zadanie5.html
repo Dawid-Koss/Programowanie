@@ -1,0 +1,16 @@
+<script>
+function licz(n){
+    sum = 0;
+    dzielna = 1;
+    for(var i = 1; i < n; i++){
+        if ((i%2) == 0){
+            sum -= (1/dzielna);
+        }else{
+            sum += (1/dzielna);
+        }
+        dzielna += 2;
+    }
+    return sum * 4;
+}
+console.log(licz(676767));
+</script>

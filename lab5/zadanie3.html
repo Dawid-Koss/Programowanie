@@ -1,0 +1,16 @@
+<script>
+function funkcjaTestowa(n){
+    tab = [];
+    tab.push(0);
+    tab.push(1);
+    i = 2;
+    while (i<n){
+        wyraz = tab[i-2]+tab[i-1];
+        tab.push(wyraz);
+        i++;
+    }
+    console.log(tab)
+
+}
+funkcjaTestowa(5);
+</script>
