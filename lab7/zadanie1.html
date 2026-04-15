@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="get" name="kalkulator">
+        <input type="number" id="pierwsza"> ÷ 
+        <input type="number" id="druga"></br>
+    </form>
+    <button onclick="dziel()" name="licz">dziel</button></br>
+    <span id="wynik"></span>
+    <script>
+        function dziel(){
+            var x = parseFloat(document.getElementById("pierwsza").value);
+            var y = parseFloat(document.getElementById("druga").value); 
+            try{
+                wynik = x/y;
+                document.getElementById("wynik").innerHTML = wynik;
+            }catch(err){
+                document.getElementById("wynik").innerHTML = "Błędne liczby";
+            }
+        }
+    </script>
+</body>
+</html>
