@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        Imię: <input type="text" id="imie"> <br>
+        Nazwisko: <input type="text" id="nazwisko"> <br>
+        Wiek: <input type="number" id="wiek"><br>
+    </form>
+    <button onclick="ustaw()">Wyślij</button>
+    <script>
+    function ustaw(){
+        const dane = {
+            imie: document.getElementById("imie").value,
+            naziwsko: document.getElementById("nazwisko").value,
+            wiek: document.getElementById("wiek").value,
+        }
+        // Zad 1 pkt a
+        console.log(dane)   
+        // Zad 1 pkt b
+        console.log(dane.imie)   
+        console.log(dane.naziwsko)   
+        console.log(dane.wiek) 
+        // Zad 1 pkt c  
+        json = JSON.stringify(dane)
+        console.log(json)
+    }
+    // Zad 2
+    class ComplexNumber{
+        constructor(real, imaginary){
+            this.real = real
+            this.imaginary = imaginary
+        }
+        wypisz(){
+            if (imaginary>0){
+                console.log(real+"-"+imaginary+"i")
+            }else{
+                console.log(real+imaginary+"i")
+            }
+        }
+        module(){
+            return math.sqrt(real^2 + imaginary^2)
+        }
+    }
+    </script>
+</body>
+</html>

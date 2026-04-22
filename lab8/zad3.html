@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="number" id="n">
+    </form>
+    <button onclick="policz()">Wyślij</button>
+    <script>
+    // Zad 2
+    class ComplexNumber{
+        constructor(real, imaginary){
+            this.real = real
+            this.imaginary = imaginary
+        }
+        wypisz(){
+            if (this.imaginary>0){
+                console.log(String(this.real)+"+"+String(this.imaginary)+"i")
+            }else{
+                console.log(String(this.real)+" "+String(this.imaginary)+"i")
+            }
+        }
+        module(){
+            return Math.sqrt(this.real**2 + this.imaginary**2)
+        }
+    };
+    function nzespolonych(n){
+        var tablica = []
+        for (var i = 1; i<=n; i++){
+            real = Math.floor(Math.random()*10)
+            imaginary = Math.floor(Math.random()*10)
+            temp = new ComplexNumber(real, imaginary)
+            tablica.push(temp)
+        }
+        return tablica
+    }
+    function policz(){
+        var n = parseFloat(document.getElementById("n").value)
+        tablica = nzespolonych(n)
+        tablica[n-1].wypisz()
+        console.log(tablica)
+    }
+    </script>
+</body>
+</html>

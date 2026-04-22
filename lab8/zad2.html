@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        Liczba rzeczywista <input type="number" id="real"> <br>
+        Liczba urojona<input type="number" id="imaginary"> <br>
+    </form>
+    <button onclick="policz()">Wyślij</button>
+    <script>
+    // Zad 2
+    class ComplexNumber{
+        constructor(real, imaginary){
+            this.real = real
+            this.imaginary = imaginary
+        }
+        wypisz(){
+            if (this.imaginary>0){
+                console.log(String(this.real)+"+"+String(this.imaginary)+"i")
+            }else{
+                console.log(String(this.real)+" "+String(this.imaginary)+"i")
+            }
+        }
+        module(){
+            return Math.sqrt(this.real**2 + this.imaginary**2)
+        }
+    };
+    function policz(){
+        var real = document.getElementById("real").value
+        var imaginary = document.getElementById("imaginary").value
+        zespolona = new ComplexNumber(real,imaginary)
+        zespolona.wypisz()
+        console.log(zespolona.module())
+    }
+    </script>
+</body>
+</html>
