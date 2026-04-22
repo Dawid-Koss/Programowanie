@@ -1,7 +1,39 @@
 <script>
-function funkcjaTestowa()
-{
-console.log("Witaj JS!");
-}
-funkcjaTestowa(); //to jest wywołanie funkcji
+    function dzies(dzi){
+        var reszty = []
+        while(dzi>1){
+            var wynik = Math.floor(dzi / 16)
+            var reszta = dzi % 16
+            reszty.push(reszta)
+            dzi = wynik
+        }
+        var pom = ""
+        for(i = reszty.length; i > 0; i--){
+            switch(reszty[i-1]){
+                case 15:
+                    pom += "F"
+                    break
+                case 14:
+                    pom += "E"
+                    break
+                case 13:
+                    pom += "D"
+                    break
+                case 12:
+                    pom += "C"
+                    break
+                case 11:
+                    pom += "B"
+                    break 
+                case 10:
+                    pom += "A"
+                    break       
+                default:
+                    pom += reszty[i-1]
+                    break                                                                                     
+            }
+        }
+        console.log(pom)
+    }
+    dzies(63832990007)
 </script>

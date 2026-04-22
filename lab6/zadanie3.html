@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="czas">
+        <span id="godzina">00</span>:<span id="minuty">00</span>:<span id="sekundy">00</span>
+
+    </h1>
+    <button id="pobierz" onclick="pobierz()">Pobierz</button>
+    <script>
+        function pobierz(){  
+            var request = new XMLHttpRequest();
+            var url = "https://timeapi.io/api/v1/time/current/zone?timezone=Europe%2FWarsaw"
+            request.open("GET", url, false)
+            request.send
+            consol.log(JSON.parse(request.responseText))
+        }
+    </script>
+    
+</body>
+</html>

@@ -4,6 +4,7 @@
     <style>
         #reset {display:inline-block;}
         #stop {display:none;}
+        #reset {display:none}
     </style>
 </head>
 <body>
@@ -22,17 +23,29 @@
         var godzina = 0;
         var minuta = 0;
         var sekunda = 0;
+        var uruchomiony = true;
 
         function startt(){
+            uruchomiony = true;
             intewral = setInterval(zm,1000);
             document.getElementById("start").style.display ="none";
             document.getElementById("stop").style.display ="inline-block";
+            document.getElementById("reset").style.display ="none";
+            document.getElementById("stan_stopera").innerHTML = "Odliczanie..."
+            document.getElementById("reset").style.display ="inline-block";
         }
         function resett(){
+            if(uruchomiony){
+                clearInterval(intewral);
+                    intewral = setInterval(zm,1000);
+            }
             godzina = 0;
             minuta = 0;
             sekunda = 0;
             pokaz()
+            document.getElementById("zapisane_czasy").innerHTML = ""
+            document.getElementById("stan_stopera").innerHTML = ""
+            document.getElementById("reset").style.display ="none";
         }
         function zm(){
             sekunda += 1
@@ -64,12 +77,35 @@
             }
         }
         function stopp(){
+            uruchomiony = false;
             clearInterval(intewral);
-            document.getElementById("start").style.display ="none";
-            document.getElementById("stop").style.display ="inline-block";
+            document.getElementById("start").style.display ="inline-block";
+            document.getElementById("stop").style.display ="none";
+            document.getElementById("reset").style.display ="inline-block";
+            document.getElementById("stan_stopera").innerHTML = "Wstrzymano"
+            document.getElementById("reset").style.display ="inline-block";
         }
         function zap(){
-
+            var pom = 0;
+            if (godzina < 10){
+                pom = "0"+godzina;
+            }else{
+                pom = godzina;
+            }
+            if (minuta < 10){
+                pom += ":0"+minuta;
+            }else{
+                pom += ":"+minuta;
+            }
+            if (sekunda < 10){
+                pom += ":0"+sekunda;
+            }else{
+                pom += ":"+sekunda;
+            }
+            var node = document.createElement("li");
+            var textnode = document.createTextNode(pom);
+            node.append(textnode);
+            document.getElementById("zapisane_czasy").appendChild(node);
         }
     </script>
 </body>
