@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        Nazwa użytkownika: <input type="text" id="nazwa" placeholder="Nazwa użytkownika"></br>
+        Email: <input type="email" id="email" placeholder="Email"></br>
+        Hasło: <input type="password" id="password" placeholder="Hasło"></br>
+        Powtórz Hasło: <input type="password" id="password2" placeholder="Powtórz haslo"></br>
+        Data urodzenia: <input type="date" id="dataur"></br>
+        Płeć: <select></br>
+            <option value="Male" id="M">Mężczyzna</option>
+            <option value="Female" id="K">Kobieta</option>
+            <option value="Inne" id="P">Nie chce podawać</option>
+        </select></br>
+        Akceptuje regulamin<input type="checkbox" id="Regulamin" required></br></br>
+        Wersja Darmowa<input type="radio" name="wersja" value="Darmowa"> Wersja standardowa<input type="radio" name="wersja" value="Standardowa"> Wersja premium<input type="radio" name="wersja" value="Premium"></br>
+    </form></br>
+    <button onclick="sprawdz()">Zarejestruj</button> <button onclick="wyczysc()">Wyczyść</button>
+    <div id="wynik"></div>
+    <script>
+        function sprawdz(){
+            const nazwa = document.getElementById('nazwa').value
+            const email = document.getElementById('email').value
+            const pass1 = document.getElementById('password').value
+            const pass2 = document.getElementById('password2').value
+            const dataUr = document.getElementById('dataur').value
+            const plec = document.querySelector('select').selectedOptions[0].text
+            const regulamin = document.getElementById('Regulamin').checked
+            const wersjaRadio = document.querySelector('input[name="wersja"]:checked')
+            const wynik = document.getElementById('wynik')
+            const regexAlfanumeryczny = /^[a-zA-Z0-9]+$/
+            const regexHaslo = /^(?=.*\d).{8,}$/
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+            const dUr = new Date(dataUr)
+            const dzis = new Date()
+            const pelnoletni = new Date()
+            const dataFormat = dUr.toLocaleDateString('pl-PL')
+            pelnoletni.setFullYear(dzis.getFullYear() - 18)    
+
+            if (!nazwa || !email || !pass1 || !pass2 || !dataUr || !wersjaRadio || !regulamin) {
+                alert("Wszystkie pola muszą być wypełnione oraz zaakceptować regulamin.")
+                return
+            }
+            if (!regexAlfanumeryczny.test(nazwa)) {
+                alert("Nazwa użytkownika może zawierać tylko litery i cyfry.")
+                return
+            }
+            if (!regexHaslo.test(pass1)) {
+                alert("Hasło musi mieć co najmniej 8 znaków i jedną cyfrę.")
+                return
+            }
+            if (pass1 !== pass2) {
+                alert("Hasła nie są identyczne!")
+                return
+            }
+            if (!regexEmail.test(email)) {
+                alert("Podany adres e-mail jest nieprawidłowy!")
+                return
+            }
+            if (dUr > pelnoletni) {
+                alert("Musisz mieć ukończone 18 lat!")
+                return
+            }
+            wynik.innerHTML = `
+                <hr>
+                <p><b>Nazwa użytkownika:</b> ${nazwa}</p>
+                <p><b>Hasło:</b> ${"*".repeat(pass1.length)}</p>
+                <p><b>Adres e-mail:</b> ${email}</p>
+                <p><b>Data urodzenia:</b> ${dataFormat}</p>
+                <p><b>Płeć:</b> ${plec}</p>
+                <p><b>Wybrana wersja:</b> ${wersjaRadio.value}</p>
+            `;
+        }
+        function wyczysc(){
+            document.querySelector('form').reset()
+            document.getElementById('wynik').innerHTML = ""
+        }
+
+    </script>
+</body>
+</html>
