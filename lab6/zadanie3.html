@@ -7,17 +7,21 @@
 </head>
 <body>
     <h1 id="czas">
+        <span id="dzien">00</span>.<span id="miesiac">00</span>.<span id="rok">0000</span><br>
         <span id="godzina">00</span>:<span id="minuty">00</span>:<span id="sekundy">00</span>
 
     </h1>
     <button id="pobierz" onclick="pobierz()">Pobierz</button>
     <script>
-        function pobierz(){  
-            var request = new XMLHttpRequest();
-            var url = "https://timeapi.io/api/v1/time/current/zone?timezone=Europe%2FWarsaw"
-            request.open("GET", url, false)
-            request.send
-            consol.log(JSON.parse(request.responseText))
+        async function pobierz(){  
+            const odp = await fetch("https://timeapi.io/api/time/current/zone?timeZone=Europe/Warsaw")
+            const dane = await odp.json()
+            document.getElementById("godzina").innerHTML = dane.hour
+            document.getElementById("minuty").innerHTML = dane.minute
+            document.getElementById("sekundy").innerHTML = dane.seconds
+            document.getElementById("dzien").innerHTML = dane.day
+            document.getElementById("miesiac").innerHTML = dane.month
+            document.getElementById("rok").innerHTML = dane.year
         }
     </script>
     
