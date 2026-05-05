@@ -41,8 +41,10 @@
     function policz(){
         var n = parseFloat(document.getElementById("n").value)
         var tablica = nzespolonych(n)
+        var wynik = tablica.map(c => new ComplexNumber(c.imaginary, c.real))
         tablica[n-1].wypisz()
         console.log(tablica)
+        wynik.forEach(c => console.log(c.wypisz()))
     }
     </script>
 </body>

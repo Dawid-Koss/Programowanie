@@ -41,8 +41,13 @@
     function policz(){
         var n = parseFloat(document.getElementById("n").value)
         var tablica = nzespolonych(n)
+        var minModul = tablica.reduce((min, c) => {
+            var aktualny = c.module()
+            return aktualny < min ? aktualny : min
+        }, tablica[0].module())
         tablica[n-1].wypisz()
         console.log(tablica)
+        console.log(minModul)
     }
     </script>
 </body>

@@ -41,7 +41,11 @@
     function policz(){
         var n = parseFloat(document.getElementById("n").value)
         var tablica = nzespolonych(n)
-        tablica[n-1].wypisz()
+        var maxObiekt = tablica.reduce((max, c) => {
+            return c.module() > max.module() ? c : max
+        }, tablica[0])
+        maxObiekt.wypisz()
+        console.log(maxObiekt.module())
         console.log(tablica)
     }
     </script>

@@ -36,14 +36,14 @@
             this.imaginary = imaginary
         }
         wypisz(){
-            if (imaginary>0){
-                console.log(real+"-"+imaginary+"i")
+            if (this.imaginary>0){
+                console.log(this.real+"+"+this.imaginary+"i")
             }else{
-                console.log(real+imaginary+"i")
+                console.log(this.real+""+this.imaginary+"i")
             }
         }
         module(){
-            return math.sqrt(real^2 + imaginary^2)
+            return Math.sqrt(this.real**2 + this.imaginary**2)
         }
     }
     </script>
